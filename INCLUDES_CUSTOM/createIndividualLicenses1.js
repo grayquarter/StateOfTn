@@ -71,36 +71,36 @@ function createIndividualLicenses1() {
 		// DISABLED: TABC_Create_Individual_Licenses_1:12
 		// 	br_nch('TABC_Create_Individual_Licenses_7');
 		// 	}
-
-		if (!appTypeArray[1].equals('Education')) {
-			var appCounty = '';
-			appCounty = asiLicenseCounty;
-			var POD = countyLookUp('CName', appCounty);
-			assignDepartment_Custom(POD, newAppID);
-		}
-
-		// DISABLED: TABC_Create_Individual_Licenses_1:98
-		// if (newAppID && (appTypeArray[1].equals('Permits') && taskStatus('Preliminary Review').equals('Approved')) || (!matches(appTypeArray[3],'Server Training Program','Self-Distribution') && taskStatus('Application Review').equals('Approved'))) {
-		// 	var wfComment = '';
-		// 	sendNotificationToContactTypes('Business Information,Applicant-Individual,Permittee,Armed Forces Import', 'TABC_LICENSE_APPROVAL');
-		// 	}
-
-		if (newAppID && (appTypeArray[1].equals('Permits') && taskStatus('Preliminary Review').equals('Approved')) || (!matches(appTypeArray[3], 'Server Training Program', 'Self-Distribution') && taskStatus('Application Review').equals('Approved'))) {
-			var wfComment = '';
-			sendNotificationToContactTypes('Business Information,Business Representative,Applicant-Individual,Permittee,Armed Forces Import', 'TABC_LICENSE_APPROVAL');
-		}
-
-		if (!newAppID) {
-			showMessage = true;
-			logMessage('LICENSE/CERTIFICATE was not created due to an error');
-			activateTask('Application Review');
-			deactivateTask('Application Status');
-			updateTask('Application Review', 'LICENSE NOT CREATED', '', '');
-		}
-
-		if (newAppID && (appTypeArray[1].equals('Education') && !appTypeArray[3].equals('Server Training Program')) && taskStatus('Application Review').equals('Approved')) {
-			closeTask('Application Status', 'Issued', 'Updated via EMSE', '');
-		}
-
 	}
-// TODO not closed brace
+
+	if (!appTypeArray[1].equals('Education')) {
+		var appCounty = '';
+		appCounty = asiLicenseCounty;
+		var POD = countyLookUp('CName', appCounty);
+		assignDepartment_Custom(POD, newAppID);
+	}
+
+	// DISABLED: TABC_Create_Individual_Licenses_1:98
+	// if (newAppID && (appTypeArray[1].equals('Permits') && taskStatus('Preliminary Review').equals('Approved')) || (!matches(appTypeArray[3],'Server Training Program','Self-Distribution') && taskStatus('Application Review').equals('Approved'))) {
+	// 	var wfComment = '';
+	// 	sendNotificationToContactTypes('Business Information,Applicant-Individual,Permittee,Armed Forces Import', 'TABC_LICENSE_APPROVAL');
+	// 	}
+
+	if (newAppID && (appTypeArray[1].equals('Permits') && taskStatus('Preliminary Review').equals('Approved')) || (!matches(appTypeArray[3], 'Server Training Program', 'Self-Distribution') && taskStatus('Application Review').equals('Approved'))) {
+		var wfComment = '';
+		sendNotificationToContactTypes('Business Information,Business Representative,Applicant-Individual,Permittee,Armed Forces Import', 'TABC_LICENSE_APPROVAL');
+	}
+
+	if (!newAppID) {
+		showMessage = true;
+		logMessage('LICENSE/CERTIFICATE was not created due to an error');
+		activateTask('Application Review');
+		deactivateTask('Application Status');
+		updateTask('Application Review', 'LICENSE NOT CREATED', '', '');
+	}
+
+	if (newAppID && (appTypeArray[1].equals('Education') && !appTypeArray[3].equals('Server Training Program')) && taskStatus('Application Review').equals('Approved')) {
+		closeTask('Application Status', 'Issued', 'Updated via EMSE', '');
+	}
+
+}
