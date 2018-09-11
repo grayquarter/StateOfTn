@@ -20,11 +20,6 @@ CHANGE LOG:
 -- Modified LBD block for Manager INFO ASIT.
  */
 
-if (currentUserID.equals("AF03304")) {
-	showDebug = true;
-	showMessage = true;
-}
-
 if (typeof(CERTIFIEDMANAGERLIST) == "object" && CERTIFIEDMANAGERLIST.length > 0 && parentCapId) {
 	parentAltID = parentCapId.getCustomID();
 	logDebug("PARENT ALT ID: " + parentAltID);

@@ -14,4 +14,3 @@
 // 	Hcomm ='Hearing Schedule details : Date : '+vDate + '     Location : '+vLoc+'       Time : '+vTime;
 // 	editTaskComment ('Commission Agenda', Hcomm);
 // 	}
-

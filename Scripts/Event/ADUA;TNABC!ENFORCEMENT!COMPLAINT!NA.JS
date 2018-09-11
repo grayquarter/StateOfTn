@@ -1,15 +1,15 @@
-if (!isScheduled("Random Inspection")){
-	
-    var cdScriptObjResult = aa.cap.getCapDetail(capId);
+if (!isScheduled("Random Inspection")) {
 
-    var cdScriptObj = cdScriptObjResult.getOutput();
+	var cdScriptObjResult = aa.cap.getCapDetail(capId);
 
-    cd = cdScriptObj.getCapDetailModel();
+	var cdScriptObj = cdScriptObjResult.getOutput();
 
-    var enfOff = cd.getEnforceOfficerName();	
-	
+	cd = cdScriptObj.getCapDetailModel();
+
+	var enfOff = cd.getEnforceOfficerName();
+
 	aa.print("ENF: " + enfOff);
-	
-	scheduleInspectDateWGroup("TABC-Random","Random Inspection",dateAdd(null,30),enfOff);
+
+	scheduleInspectDateWGroup("TABC-Random", "Random Inspection", dateAdd(null, 30), enfOff);
 
 }

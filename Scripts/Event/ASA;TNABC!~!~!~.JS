@@ -1,3 +1,4 @@
 
-branch('EMSE:SetContactRelationshipToContactType');
+//TODO std choice does not exist
+//branch('EMSE:SetContactRelationshipToContactType');
 

@@ -47,7 +47,6 @@ if (matches(appTypeArray[1], 'Licenses', 'Liquor by the Drink', 'Retail', 'Suppl
 
 if (matches(appTypeArray[1], 'Licenses', 'Liquor by the Drink', 'Retail', 'Supplier', 'Wholesale') && wfTask.equals('Application Status') && wfStatus.equals('Issued') && asiLicenseCounty == null) {
 	showMessage = true;
-	comment('Address County field is null;
-		Please complete prior to Issuing Permit or License');
+	comment('Address County field is null; Please complete prior to Issuing Permit or License');
 	cancel = true;
 }
