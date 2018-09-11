@@ -20,7 +20,11 @@ if (matches(appTypeArray[3], 'Special Occasion', 'Self-Distribution', 'RV Traine
 // if (((appTypeArray[1].equals('Education') && !appTypeArray[3].equals('Server Training Program')) || appTypeArray[3].equals('Self-Distribution'))  && wfTask == 'Application Review' && wfStatus == 'Approved') {
 // 	closeTask('Application Status','Issued','Updated via EMSE','');
 // 	aa.runScriptInNewTransaction('WorkflowTaskUpdateAfter4Renew');
-// TODO: conversion issue
+
+// TODO: conversion issue, criteria is disabled but continuation line is enabled.  commenting out for now.
+
+/*
+
 itemCap = getParentCapID4Renewal();
 saveCap = capId;
 capId = itemCap;
@@ -29,3 +33,5 @@ capId = itemCap;
 createIndividualLicenses5();
 capId = saveCap;
 }
+
+*/
