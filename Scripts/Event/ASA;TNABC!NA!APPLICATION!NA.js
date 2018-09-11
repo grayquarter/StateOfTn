@@ -217,9 +217,10 @@ if (!appTypeArray[1].equals("Permits")) {
 
 			if (recType.equals("Special Legislation"))
 				if (appTypeArray[1].equals("Liquor by the Drink"))
-					recType = "LBD Special Legislation" else
-							recType = "Retail Special Legislation";
-						logDebug("Lookup Type: " + recType);
+					recType = "LBD Special Legislation";
+				else
+					recType = "Retail Special Legislation";
+			logDebug("Lookup Type: " + recType);
 
 			var feeInfo = new Array();
 			feeInfo = lookup("APP_FEE_LOOKUP", recType).split("|");

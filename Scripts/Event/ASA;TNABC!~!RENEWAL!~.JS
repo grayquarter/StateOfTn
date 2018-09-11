@@ -22,7 +22,7 @@ if (!appMatch('TNABC/Education/Renewal/*') && !publicUser) {
 var department = 'TABC/NA/NA/LICNPERM/NA/NA/NA';
 var wfTask = 'Preliminary Review';
 autoAssign(wfTask, department);
-if (appCounty != '')
+if (appCounty != '') {
 	updateAddressCounty(appCounty);
 }
 
