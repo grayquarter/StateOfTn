@@ -5,10 +5,11 @@ function citationDates() {
 	nASIT_PPln = new Array();
 
 	if (AInfo['Payment Frequency'].equals("Monthly"))
-		pFreq = 30 else
-				pFreq = 14;
+		pFreq = 30;
+	else
+		pFreq = 14;
 
-			pPeriods = AInfo['Payment Periods'];
+	pPeriods = AInfo['Payment Periods'];
 	pAmount = AInfo['Payment Amount'];
 	pTotalDue = AInfo['Total Amount'];
 	var pDueDate = null;
