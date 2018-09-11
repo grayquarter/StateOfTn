@@ -18,5 +18,3 @@ function validateControlNumber(cntrlNum) {
     }
 }
 
-/*
-// FA 03-28-2016 get the child node value
