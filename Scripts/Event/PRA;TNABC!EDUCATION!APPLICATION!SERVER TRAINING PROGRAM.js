@@ -1,7 +1,6 @@
 
 if (taskStatus('Application Review') == 'Approved' && balanceDue == 0) {
 	logDebug('MATCH in PRA:TNABC/Education/Application/Server Training Program');
-
 	//replaced branch(TABC_Create_Individual_Licenses_1)
 	createIndividualLicenses1();
 	closeTask('Application Status', 'Issued', 'Updated via EMSE', '');

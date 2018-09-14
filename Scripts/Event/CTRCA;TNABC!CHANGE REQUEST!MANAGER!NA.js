@@ -35,7 +35,6 @@ if (typeof(CERTIFIEDMANAGERLIST) == "object" && CERTIFIEDMANAGERLIST.length > 0 
 	var parentAppTypeArray = parentAppTypeString.split("/");
 
 	if (parentAppTypeArray[1].equals("Retail")) {
-
 		addCertifiedManagers(parentCapId);
 		removeASITable("CERTIFIED MANAGER LIST", parentCapId);
 		removeASITable("CERTIFIED CLERK LIST", parentCapId);
@@ -47,6 +46,7 @@ if (typeof(CERTIFIEDMANAGERLIST) == "object" && CERTIFIEDMANAGERLIST.length > 0 
 	}
 }
 
+// TODO: embedded redefined custom function name, could cause confusion.   Consider renaming and placing in INCLUDES_CUSTOM dir 
 function copyAppSpecificTable(srcCapId, targetCapId) {
 	var tableNameArray = getTableName(srcCapId);
 	if (tableNameArray == null) {

@@ -5,7 +5,6 @@
 // 	}
 
 if (wfTask == 'Citation Status' && wfStatus == 'Invoice Fines') {
-
 	//start replaced branch: TABC_INVOICE_FINES
 	{
 		if (feeExists('CIT002', 'NEW') && AInfo['Sale of Alcoholic Beverage/Beer to Minor']) {

@@ -1,26 +1,28 @@
 // TODO is this file name correct?
 
-try {
+// TODO: disabled try/catch since all MS 3.0 scripts execute in a try/catch
+//try {
 
-	var capIDScriptModel = aa.cap.createCapIDScriptModel(capId.getID1(), capId.getID2(), capId.getID3());
-	var examPassed = false;
+var capIDScriptModel = aa.cap.createCapIDScriptModel(capId.getID1(), capId.getID2(), capId.getID3());
+var examPassed = false;
 
-	//business process: create record; enter exam; process workflow........
-	if (wfTask.equals("Preliminary Review") && wfStatus.equals("Approved")) {
-		var outStateExam = AInfo["Class Out of State"];
-		var didExamPass = getCapExamStatus(examPassed);
-		if (!didExamPass && outStateExam == "Yes") {
-			showMessage = true;
-			comment("This review cannot be approved;  A passing exam does not exist.  Please complete the exam information before Approving the Preliminary Review");
-			cancel = true;
-		}
+//business process: create record; enter exam; process workflow........
+if (wfTask.equals("Preliminary Review") && wfStatus.equals("Approved")) {
+	var outStateExam = AInfo["Class Out of State"];
+	var didExamPass = getCapExamStatus(examPassed);
+	if (!didExamPass && outStateExam == "Yes") {
+		showMessage = true;
+		comment("This review cannot be approved;  A passing exam does not exist.  Please complete the exam information before Approving the Preliminary Review");
+		cancel = true;
 	}
-} catch (err) {
-	aa.print("A JavaScript Error occured: " + err.message + " at line " + err.lineNumber + " stack: " + err.stack);
 }
+//} catch (err) {
+//	aa.print("A JavaScript Error occured: " + err.message + " at line " + err.lineNumber + " stack: " + err.stack);
+//}
 
 aa.print("Final Result: " + didExamPass);
 
+// TODO: embedded custom function could cause confusion.   Consider placing in INCLUDES_CUSTOM dir
 function getCapExamStatus(examPassed) {
 	var examListResult = aa.examination.getExaminationList(capIDScriptModel);
 

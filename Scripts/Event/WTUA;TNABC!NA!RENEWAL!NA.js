@@ -1,6 +1,7 @@
 //WTUA:TNABC/*/RENEWAL/*
 
-try {
+// TODO: disabled try/catch since all MS 3.0 scripts execute in a try/catch
+//try {
 	if (!matches(appTypeArray[1], "Education", "Permits")) {
 		if (taskStatus("Application Review") == "Approved" || taskStatus("Commission Meeting") == "Approved" || taskStatus("Application Review") == "Approved - No Commission") {
 			var recType = appTypeArray[3];
@@ -124,10 +125,9 @@ try {
 
 	if (wfTask.equals("Application Review") && wfStatus.equals("Denied - No Commission"))
 		closeTask("Application Status", "Denied", "Updated via EMSE", "");
-} catch (err) {
-	logDebug("A JavaScript Error occured: " + err.message + " at line " + err.lineNumber + " stack: " + err.stack);
-
-}
+//} catch (err) {
+//	logDebug("A JavaScript Error occured: " + err.message + " at line " + err.lineNumber + " stack: " + err.stack);
+//}
 
 /*if (wfTask.equals("Application Review") && wfStatus.equals("Approved")){
 feeSch = "TABC-STP-S-A";

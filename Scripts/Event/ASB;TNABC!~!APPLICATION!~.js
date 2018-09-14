@@ -7,9 +7,12 @@
 
 var docList = getDocumentList();
 var catFound = false;
-for (d in docList)
-	if (docList[d].getDocCategory().equals("Consumer Education Seminar")) 
-		catFound = true; 
+for (d in docList) {
+	if (docList[d].getDocCategory().equals("Consumer Education Seminar")) {
+		catFound = true;
+	}
+}
 
-if (catFound)
-	addAdHocTask("ABC TASKS","Consumer Education Documentation Uploaded","");
+if (catFound) {
+	addAdHocTask("ABC TASKS", "Consumer Education Documentation Uploaded", "");
+}

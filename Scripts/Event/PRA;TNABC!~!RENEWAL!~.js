@@ -10,7 +10,6 @@ if (matches(appTypeArray[1], 'Liquor by the Drink', 'Retail', 'Supplier', 'Whole
 	logDebug('Parent Cap2: ' + itemCap);
 	saveCap = capId;
 	capId = itemCap;
-
 	//replaced branch(TABC_Create_Individual_Licenses_5)
 	createIndividualLicenses5();
 	capId = saveCap;

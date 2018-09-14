@@ -1,47 +1,49 @@
-try {
+// TODO: disabled try/catch since all MS 3.0 scripts execute in a try/catch
+//try {
 
-	var capIDScriptModel = aa.cap.createCapIDScriptModel(capId.getID1(), capId.getID2(), capId.getID3());
-	var examPassed = false;
+var capIDScriptModel = aa.cap.createCapIDScriptModel(capId.getID1(), capId.getID2(), capId.getID3());
+var examPassed = false;
 
-	//business process: create record; enter exam; process workflow........
-	if (wfTask.equals("Preliminary Review") && wfStatus.equals("Approved")) {
-		var didExamPass = getCapExamStatus(examPassed);
-		if (didExamPass) {
-			var asiLicenseCounty = AInfo["County"];
+//business process: create record; enter exam; process workflow........
+if (wfTask.equals("Preliminary Review") && wfStatus.equals("Approved")) {
+	var didExamPass = getCapExamStatus(examPassed);
+	if (didExamPass) {
+		var asiLicenseCounty = AInfo["County"];
 
-			comment("Permit COUNTY =  " + asiLicenseCounty);
+		comment("Permit COUNTY =  " + asiLicenseCounty);
 
-			if (asiLicenseCounty != null) {
-				var spExpireDate = dateAddMonths(null, 60);
-				var contactType = TNABCgetContactType("TNABC", "Permits", "NA", "Server");
-				spCapId = createPermit("TNABC", "Permits", "NA", "Server", "", "Active", true, false, contactType, false, "", asiLicenseCounty);
+		if (asiLicenseCounty != null) {
+			var spExpireDate = dateAddMonths(null, 60);
+			var contactType = TNABCgetContactType("TNABC", "Permits", "NA", "Server");
+			spCapId = createPermit("TNABC", "Permits", "NA", "Server", "", "Active", true, false, contactType, false, "", asiLicenseCounty);
 
-				logDebug("Server Permit Expiration Date: " + spExpireDate);
+			logDebug("Server Permit Expiration Date: " + spExpireDate);
 
-				holdId = capId;
-				capId = spCapId;
+			holdId = capId;
+			capId = spCapId;
 
-				copyASIFields(holdId, capId);
-				editAppName("Created from Application #" + capIDString);
-				updateTask("Permit Status", "Active", "Updated via EMSE Script", "");
-				licEditExpInfo("Active", spExpireDate);
+			copyASIFields(holdId, capId);
+			editAppName("Created from Application #" + capIDString);
+			updateTask("Permit Status", "Active", "Updated via EMSE Script", "");
+			licEditExpInfo("Active", spExpireDate);
 
-				capId = holdId;
+			capId = holdId;
 
-				spTemplateName = "TABC_LICENSE_APPROVAL";
-				sendNotificationToContactTypes("Permittee", spTemplateName);
+			spTemplateName = "TABC_LICENSE_APPROVAL";
+			sendNotificationToContactTypes("Permittee", spTemplateName);
 
-				closeTask("Application Status", "Issued", "Updated via Exam Upload Script", "");
+			closeTask("Application Status", "Issued", "Updated via Exam Upload Script", "");
 
-			}
 		}
 	}
-} catch (err) {
-	aa.print("A JavaScript Error occured: " + err.message + " at line " + err.lineNumber + " stack: " + err.stack);
 }
+//} catch (err) {
+//	aa.print("A JavaScript Error occured: " + err.message + " at line " + err.lineNumber + " stack: " + err.stack);
+//}
 
 aa.print("Final Result: " + didExamPass);
 
+// TODO: embedded custom function could cause confusion.   Consider placing in INCLUDES_CUSTOM dir
 function getCapExamStatus(examPassed) {
 	var examListResult = aa.examination.getExaminationList(capIDScriptModel);
 

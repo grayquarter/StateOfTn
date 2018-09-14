@@ -11,7 +11,6 @@ if (matches(appTypeArray[3], 'Server Training Trainer') && (taskStatus('Applicat
 	logDebug('Parent Cap2: ' + itemCap);
 	saveCap = capId;
 	capId = itemCap;
-
 	//replaced branch(TABC_Create_Individual_Licenses_5)
 	createIndividualLicenses5();
 	capId = saveCap;
